@@ -6,7 +6,7 @@
   
   <!-- Primary Meta Tags -->
   <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- <meta name="title" content="PhysBench - Elliot Kim">
   <!-- TODO: Write a compelling 150-160 character description of your research -->
   <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
@@ -64,7 +64,6 @@
   <meta name="msapplication-TileColor" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +107,21 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+  <!-- MathJax Configuration (MUST come before loading MathJax) -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+
+<!-- Load MathJax -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
@@ -185,55 +198,6 @@
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <main id="main-content">
   <section class="hero">
     <div class="hero-body">
@@ -241,29 +205,29 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">PhysBench</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="https://emk255.github.io" target="_blank">Elliot Kim</a></span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <!-- <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span> -->
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <!-- <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a> -->
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    <span class="author-block">Cornell University</span>
                     <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
+                      <!-- <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
@@ -271,10 +235,10 @@
                         </span>
                         <span>Paper</span>
                       </a>
-                    </span>
+                    </span> -->
 
                     <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="static/pdfs/supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -282,10 +246,10 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -293,10 +257,10 @@
                     </span>
                     <span>Code</span>
                   </a>
-                </span>
+                </span> -->
 
                 <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -304,7 +268,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
             </div>
           </div>
         </div>
@@ -312,166 +276,280 @@
     </div>
   </div>
 </section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
 <!-- Paper abstract -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+      <div class="column is-full">
+        <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            We introduce PhysBench, a challenging benchmark designed to assess the physical reasoning capabilities of state-of-the-art large language models (LLMs). PhysBench consists of 843 curated questions across the domains of mechanics, electromagnetism, thermodynamics, optics, and relativity, with 696 problems incorporating images that require multimodal understanding. We find that our benchmark, completely free of data contamination:
           </p>
+          <ol style="list-style-type: none; padding-left: 0;">
+            <li>(1) is substantially more challenging than existing benchmarks</li>
+            <li>(2) demonstrates that augmenting a built-in web search tool is adversarial to models' performance.</li>
+          </ol>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Experiments</h2>
+        
+        <!-- SETUP SECTION -->
+        <div class="column is-full">
+          <h3 class="title is-4" style="text-align: left;">Setup</h3>
           
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <div class="content has-text-justified">
+            <h4 class="title is-5">Submatrix Analysis</h4>
+            <p>
+              To quantify the relative difficulty of our benchmark $B_{\text{Phys}}$ in comparison to existing benchmarks $B_{\text{Existing}}$, we first classify a group of strong models $M_{\text{strong}}$ and weak models $M_{\text{weak}}$ using results from Table 1 with an accuracy rate threshold of $t=0.30$. We then identify sub-matrices of the performance dataset where:
+            </p>
+            <ol style="list-style-type: none; padding-left: 0;">
+              <li>(1) $A(M_{\text{Strong}}, B_{\text{Phys}}) \gg A(M_{\text{Weak}}, B_{\text{Phys}})$, and</li>
+              <li>(2) $A(M_{\text{Strong}}, B_{\text{Existing}}) \approx A(M_{\text{Weak}}, B_{\text{Existing}})$,</li>
+            </ol>
+            <p>
+              where $A(M,B)$ refers to the average accuracy rate of models in group $M$ on benchmark $B$. In the following group of experiments, $B_{\text{Existing}}=\text{OlympiadBench}$, as it represents the most comparable existing multi-modal physics benchmark in terms of domain coverage and problem difficulty.
+            </p>
+            
+            <h4 class="title is-5">Clustering Analysis</h4>
+            <p>
+              We extend submatrix analysis through clustering to discover natural problem groupings beyond predefined features. We generate embeddings directly from problem text (context + question) for all problems across both benchmarks, placing them in a unified vector space. After clustering, we use an LLM to generate keyword lists for problems within each cluster, enabling qualitative interpretation of the discovered subcategories.
+            </p>
+          </div>
+        </div>
+      
+        <!-- TABLE SECTION -->
+        <div class="content" style="margin-top: 2rem;">
+          <table class="table is-bordered is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th rowspan="3"></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Solution Length</strong></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Latex Components</strong></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Problem Embedding</strong></th>
+              </tr>
+              <tr>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Short (bottom 50%)</th>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Fewer (bottom 50%)</th>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Thermo Cluster 11</th>
+              </tr>
+              <tr>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=459, n=239</th>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=344, n=232</th>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=138, n=33</th>
+              </tr>
+              <tr style="border-top: 2px solid #333;">
+                <th><strong>Model Group</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$M_{\text{strong}}$</td>
+                <td style="text-align: center;">48.15%</td>
+                <td style="text-align: center;">68.20%</td>
+                <td style="text-align: center;">52.62%</td>
+                <td style="text-align: center;">57.33%</td>
+                <td style="text-align: center;">51.41%</td>
+                <td style="text-align: center;">62.86%</td>
+              </tr>
+              <tr>
+                <td>$M_{\text{weak}}$</td>
+                <td style="text-align: center;">23.63%</td>
+                <td style="text-align: center;">58.84%</td>
+                <td style="text-align: center;">22.91%</td>
+                <td style="text-align: center;">49.84%</td>
+                <td style="text-align: center;">30.52%</td>
+                <td style="text-align: center;">53.19%</td>
+              </tr>
+              <tr style="border-top: 2px solid #333;">
+                <td><strong>Gap (×)</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.62</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.30</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.16</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            <p><strong>Note:</strong> PB = PhysBench, OB = OlympiadBench. Gap (×) = ratio of PhysBench gap to OlympiadBench gap.</p>
+            <p>For clustering, we implement KMeans, setting $k=13$. We use OpenAI's text-embedding-3-large to generate embeddings.</p>
+          </div>
+        </div>
+      
+        <!-- RESULTS SECTION -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Results</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              Table 2 reveals a substantial discrimination gap between strong and weak models on PhysBench, particularly for problems with short solutions and simple mathematical expressions. This pronounced gap highlights how the benchmark's difficulty arises from conceptual reasoning requirements: success relies on recognizing the relevant knowledge, formula, or framework, rather than merely performing computations. In contrast, OlympiadBench exhibits much less separation between strong and weak models, indicating its problems are more predictable and can often be solved by pattern matching instead of deep understanding.
+            </p>
+            <p>
+              Clustering problems by embeddings also surfaces a thermodynamics-focused group, where a marked performance gap persists. Analysis of model-generated keywords suggests this cluster covers challenging, real-system physics such as phase transitions and energy transfer.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Case Study: Augmenting Built-in Web Search Tool</h2>
+        
+        <!-- SETUP SECTION -->
+        <div class="content has-text-justified">
+          <p>
+            Previous studies have revealed that integrating LLMs with web search faces critical challenges including knowledge conflicts, position bias, and tool availability failures. However, this research primarily examined loosely coupled RAG systems using external APIs or custom pipelines. With state-of-the-art LLMs now offering built-in web search tools that combine conversational and information retrieval capabilities, we hypothesize these integrated architectures will improve overall performance.
+          </p>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
+      
+        <div class="content" style="margin-top: 2rem;">
+          <table class="table is-bordered is-striped is-hoverable" style="width: 100%;">
+            <thead>
+              <tr style="border-top: 2px solid #333;">
+                <th><strong>Model Configuration</strong></th>
+                <th style="text-align: center;"><strong>Electro</strong><br><span style="font-weight: normal; font-size: 0.9em;">(245)</span></th>
+                <th style="text-align: center;"><strong>Mechanics</strong><br><span style="font-weight: normal; font-size: 0.9em;">(321)</span></th>
+                <th style="text-align: center;"><strong>Optics</strong><br><span style="font-weight: normal; font-size: 0.9em;">(97)</span></th>
+                <th style="text-align: center;"><strong>Relativity</strong><br><span style="font-weight: normal; font-size: 0.9em;">(24)</span></th>
+                <th style="text-align: center;"><strong>Thermo</strong><br><span style="font-weight: normal; font-size: 0.9em;">(152)</span></th>
+                <th style="text-align: center;"><strong>Avg.</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Baseline Section -->
+              <tr style="background-color: #f5f5f5;">
+                <td colspan="7"><strong>Baseline (No Tools)</strong></td>
+              </tr>
+              <tr>
+                <td>Gemini 2.5 Pro</td>
+                <td style="text-align: center;">46.94</td>
+                <td style="text-align: center;">52.00</td>
+                <td style="text-align: center;">49.48</td>
+                <td style="text-align: center;">37.50</td>
+                <td style="text-align: center;">48.68</td>
+                <td style="text-align: center;">46.92</td>
+              </tr>
+              <tr>
+                <td>GPT 4.1 (CoT)</td>
+                <td style="text-align: center;">24.08</td>
+                <td style="text-align: center;">22.12</td>
+                <td style="text-align: center;">18.56</td>
+                <td style="text-align: center;">33.33</td>
+                <td style="text-align: center;">25.00</td>
+                <td style="text-align: center;">24.62</td>
+              </tr>
+              <tr>
+                <td>GPT 4.1-mini (CoT)</td>
+                <td style="text-align: center;">24.90</td>
+                <td style="text-align: center;">22.77</td>
+                <td style="text-align: center;">13.40</td>
+                <td style="text-align: center;">33.33</td>
+                <td style="text-align: center;">23.68</td>
+                <td style="text-align: center;">23.62</td>
+              </tr>
+              
+              <!-- With Built-in Web Search Section -->
+              <tr style="background-color: #f5f5f5; border-top: 1px solid #ddd;">
+                <td colspan="7"><strong>With Built-in Web Search</strong></td>
+              </tr>
+              <tr>
+                <td>Gemini 2.5 Pro + Google Search</td>
+                <td style="text-align: center;">42.86</td>
+                <td style="text-align: center;">48.31</td>
+                <td style="text-align: center;">39.18</td>
+                <td style="text-align: center;">41.67</td>
+                <td style="text-align: center;">46.05</td>
+                <td style="text-align: center;">43.61</td>
+              </tr>
+              <tr style="font-style: italic; color: #666;">
+                <td>$\Delta$ from baseline</td>
+                <td style="text-align: center;">-4.08</td>
+                <td style="text-align: center;">-3.69</td>
+                <td style="text-align: center;">-10.30</td>
+                <td style="text-align: center;">+4.17</td>
+                <td style="text-align: center;">-2.63</td>
+                <td style="text-align: center;">-3.31</td>
+              </tr>
+              
+              <tr style="border-top: 1px solid #ddd;">
+                <td>GPT 4.1 + Web Search (CoT)</td>
+                <td style="text-align: center;">23.05</td>
+                <td style="text-align: center;">25.23</td>
+                <td style="text-align: center;">13.68</td>
+                <td style="text-align: center;">25.00</td>
+                <td style="text-align: center;">17.22</td>
+                <td style="text-align: center;">20.84</td>
+              </tr>
+              <tr style="font-style: italic; color: #666;">
+                <td>$\Delta$ from baseline</td>
+                <td style="text-align: center;">-1.03</td>
+                <td style="text-align: center;">+3.11</td>
+                <td style="text-align: center;">-4.88</td>
+                <td style="text-align: center;">-8.33</td>
+                <td style="text-align: center;">-7.78</td>
+                <td style="text-align: center;">-3.78</td>
+              </tr>
+              
+              <tr style="border-top: 1px solid #ddd;">
+                <td>GPT 4.1-mini + Web Search (CoT)</td>
+                <td style="text-align: center;">12.13</td>
+                <td style="text-align: center;">14.43</td>
+                <td style="text-align: center;">12.22</td>
+                <td style="text-align: center;">4.17</td>
+                <td style="text-align: center;">12.00</td>
+                <td style="text-align: center;">11.00</td>
+              </tr>
+              <tr style="font-style: italic; color: #666; border-bottom: 2px solid #333;">
+                <td>$\Delta$ from baseline</td>
+                <td style="text-align: center;">-12.77</td>
+                <td style="text-align: center;">-8.34</td>
+                <td style="text-align: center;">-1.18</td>
+                <td style="text-align: center;">-29.16</td>
+                <td style="text-align: center;">-11.68</td>
+                <td style="text-align: center;">-12.62</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+            <p><strong>Note:</strong> For OpenAI models, we "require" web search to be used because "auto" mode never utilized web search. Google's models does not have such option, as there is only "auto" mode.</p>
+          </div>
         </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
+      
+        <!-- RESULTS SECTION -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Results</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              The table above shows that multi-modal models using built-in web search tools does not improve performance, but rather has an adversarial effect on our benchmark. The magnitude of this effect is greater as the base performance of the model gets worse. This phenomenon stays consistent with prior work on external web-search being integrated with LLMs; this re-emphasizes that our benchmark stresses conceptual inference rather than recall, where additional web evidence often distracts rather than helps. 
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
@@ -488,7 +566,7 @@
   url={https://your-domain.com/your-project-page}
 }</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
