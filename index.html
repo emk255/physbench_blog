@@ -73,7 +73,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>PhysBench - Elliot Kim</title>
+  <title>Web Search is Surprisingly Adversarial to Physics Reasoning - Elliot Kim</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -205,7 +205,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">PhysBench</h1>
+            <h1 class="title is-1 publication-title">Web Search is Surprisingly Adversarial to Physics Reasoning</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
@@ -284,7 +284,7 @@
         <h2 class="title is-3">Introduction</h2>
         <div class="content has-text-justified">
           <p>
-            Prior research has shown promising gains when augmenting agents with external tools such as web search <a href="https://arxiv.org/pdf/2506.06287" target="_blank">[1]</a>. However, there is little systematic research that isolates the effect of built-in web search tools across domains. This report presents a surprising case study: on challenging physics questions, models equipped with built-in web search perform worse than the same models without it. We therefore introduce PhysBench, a contamination-free benchmark of 843 curated questions spanning mechanics, electromagnetism, thermodynamics, optics, and relativity, including 696 multimodal problems with images. PhysBench is substantially more challenging than existing benchmarks and demonstrates that augmenting a built-in web search tool is adversarial to models' performance.
+            Prior research has shown promising gains when augmenting agents with external tools such as web search [1]. However, there is little systematic research that isolates the effect of built-in web search tools across domains. This report presents a surprising case study: on challenging physics questions, models equipped with built-in web search perform worse than the same models without it. We evaluate state-of-the-art multimodal models on a curated set of 843 contamination-free physics problems spanning mechanics, electromagnetism, thermodynamics, optics, and relativity, including 696 multimodal problems with images. Our analysis reveals that web search degrades performance across all models, with larger negative effects on weaker models—demonstrating a domain where additional information retrieval actively harms reasoning rather than helping it.
           </p>
         </div>
       </div>
@@ -304,13 +304,14 @@
         <div class="box" style="height: 100%;">
           <div class="media">
             <div class="media-left">
-              <span class="icon is-large has-text-primary"><i class="fas fa-mountain fa-2x"></i></span>
+              <span class="icon is-large has-text-primary"><i class="fas fa-search fa-2x"></i></span>
             </div>
             <div class="media-content">
-              <p class="title is-5" style="margin-bottom: 0.25rem;">Challenging Physics Benchmark for Multi-Modal Models</p>
-              <p class="is-size-6">
-                Contamination-free; tests conceptual reasoning over computational ability.
-              </p>
+              <p class="title is-5" style="margin-bottom: 0.25rem;">Surprsingly Adversarial to Web Tool</p>
+              <ul class="is-size-6" style="margin-bottom: 0; margin-left: 1rem; list-style-type: disc;">
+                <li>Gpt 4.1-mini loses <u>44%</u> of baseline performance overall.</li>
+                <li>In <b>thermodynamics</b>, models lose an average of <u>28.7%</u> of baseline performance .</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -319,13 +320,14 @@
         <div class="box" style="height: 100%;">
           <div class="media">
             <div class="media-left">
-              <span class="icon is-large" style="color: #E91E63;"><i class="fas fa-thumbs-down fa-2x"></i></span>
+              <span class="icon is-large" style="color: #E91E63;"><i class="fas fa-lightbulb fa-2x"></i></span>
             </div>
             <div class="media-content">
-              <p class="title is-5" style="margin-bottom: 0.25rem;">Adversarial Effect of Built-in Web Search Tools</p>
-              <p class="is-size-6">
-                Isolates the adversarial effect of state-of-the-art built-in web search tools on multi-modal models.
-              </p>
+              <p class="title is-5" style="margin-bottom: 0.25rem;">In-depth Case Studies</p>
+              <ul class="is-size-6" style="margin-bottom: 0; margin-left: 1rem; list-style-type: disc;">
+                <li>Prone to propagating errors from sources into reasoning.</li>
+                <li>Misapplication of incorrect search results.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -337,138 +339,35 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Experiments</h2>
-        
-        <!-- SETUP SECTION -->
-        <div class="column is-full">
-          <h3 class="title is-4" style="text-align: left;">Setup</h3>
-          
-          <div class="content has-text-justified">
-            <h4 class="title is-5">Submatrix Analysis</h4>
-            <p>
-              To quantify the relative difficulty of our benchmark $B_{\text{Phys}}$ in comparison to existing benchmarks $B_{\text{Existing}}$, we first classify a group of strong models $M_{\text{strong}}$ and weak models $M_{\text{weak}}$ using results from Table 1 with an accuracy rate threshold of $t=0.30$. We then identify sub-matrices of the performance dataset where:
-            </p>
-            <ol style="list-style-type: none; padding-left: 0;">
-              <li>(1) $A(M_{\text{Strong}}, B_{\text{Phys}}) \gg A(M_{\text{Weak}}, B_{\text{Phys}})$, and</li>
-              <li>(2) $A(M_{\text{Strong}}, B_{\text{Existing}}) \approx A(M_{\text{Weak}}, B_{\text{Existing}})$,</li>
-            </ol>
-            <p>
-              where $A(M,B)$ refers to the average accuracy rate of models in group $M$ on benchmark $B$. In the following group of experiments, $B_{\text{Existing}}=\text{OlympiadBench}$, as it represents the most comparable existing multi-modal physics benchmark in terms of domain coverage and problem difficulty.
-            </p>
-            
-            <h4 class="title is-5">Clustering Analysis</h4>
-            <p>
-              We extend submatrix analysis through clustering to discover natural problem groupings beyond predefined features. We generate embeddings directly from problem text (context + question) for all problems across both benchmarks, placing them in a unified vector space. After clustering, we use an LLM to generate keyword lists for problems within each cluster, enabling qualitative interpretation of the discovered subcategories.
-            </p>
-          </div>
-        </div>
-      
-        <!-- TABLE SECTION -->
-        <div class="content" style="margin-top: 2rem;">
-          <table class="table is-bordered is-striped is-hoverable">
-            <thead>
-              <tr>
-                <th rowspan="3"></th>
-                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Solution Length</strong></th>
-                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Latex Components</strong></th>
-                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Problem Embedding</strong></th>
-              </tr>
-              <tr>
-                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Short (bottom 50%)</th>
-                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Fewer (bottom 50%)</th>
-                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Thermo Cluster 11</th>
-              </tr>
-              <tr>
-                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=459, n=239</th>
-                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=344, n=232</th>
-                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=138, n=33</th>
-              </tr>
-              <tr style="border-top: 2px solid #333;">
-                <th><strong>Model Group</strong></th>
-                <th style="text-align: center;"><strong>PB</strong></th>
-                <th style="text-align: center;"><strong>OB</strong></th>
-                <th style="text-align: center;"><strong>PB</strong></th>
-                <th style="text-align: center;"><strong>OB</strong></th>
-                <th style="text-align: center;"><strong>PB</strong></th>
-                <th style="text-align: center;"><strong>OB</strong></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>$M_{\text{strong}}$</td>
-                <td style="text-align: center;">48.15%</td>
-                <td style="text-align: center;">68.20%</td>
-                <td style="text-align: center;">52.62%</td>
-                <td style="text-align: center;">57.33%</td>
-                <td style="text-align: center;">51.41%</td>
-                <td style="text-align: center;">62.86%</td>
-              </tr>
-              <tr>
-                <td>$M_{\text{weak}}$</td>
-                <td style="text-align: center;">23.63%</td>
-                <td style="text-align: center;">58.84%</td>
-                <td style="text-align: center;">22.91%</td>
-                <td style="text-align: center;">49.84%</td>
-                <td style="text-align: center;">30.52%</td>
-                <td style="text-align: center;">53.19%</td>
-              </tr>
-              <tr style="border-top: 2px solid #333;">
-                <td><strong>Gap (×)</strong></td>
-                <td colspan="2" style="text-align: center;"><strong>2.62</strong></td>
-                <td colspan="2" style="text-align: center;"><strong>2.30</strong></td>
-                <td colspan="2" style="text-align: center;"><strong>2.16</strong></td>
-              </tr>
-            </tbody>
-          </table>
-          
-          <div style="margin-top: 10px; font-size: 0.9em; color: #666; text-align: left;">
-            <p><strong>Note:</strong> PB = PhysBench, OB = OlympiadBench. Gap (×) = ratio of PhysBench gap to OlympiadBench gap. For clustering, we implement KMeans, setting $k=13$, using OpenAI's text-embedding-3-large. Thermodynamics cluster (third column): ≈2.2× stronger discrimination; keywords indicate phase behavior and thermal energy transfer in real systems, beyond ideal-gas assumptions.</p>
-          </div>
-        </div>
-      
-        <!-- RESULTS SECTION -->
-        <div class="column is-full" style="margin-top: 2rem;">
-          <h3 class="title is-4" style="text-align: left;">Results</h3>
-          
-          <div class="content has-text-justified">
-            <p>
-              PhysBench exhibits substantial model discrimination even on problems with simple math, revealing that difficulty arises from conceptual reasoning rather than computation. Clustering analysis further identifies thermodynamics as particularly challenging, with persistent performance gaps on real-system physics like phase transitions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Case Study: Augmenting Built-in Web Search Tool</h2>
+        <h2 class="title is-3">Experimental Results</h2>
         
         <!-- SETUP SECTION -->
         <div class="content has-text-justified">
           <p>
-            With state-of-the-art LLMs now offering built-in web search tools that combine conversational and information retrieval capabilities, we hypothesize these integrated architectures will improve overall performance.
+            With state-of-the-art LLMs now offering built-in web search tools that combine conversational and information retrieval capabilities, we hypothesize these integrated architectures will improve overall performance. Web search tools degrade rather than improve performance on a challenging set of physics problems, with larger negative effects on weaker models.
           </p>
         </div>
       
         <div class="content" style="margin-top: 2rem;">
-          <img src="web_search_impact.png" alt="Web Search Impact" style="width: 100%; height: auto;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
+              <img src="static/plots/electro_performance.png" alt="Electromagnetism Performance" style="width: 60%; height: auto; margin-right: 2%;">
+              <img src="static/plots/optics_performance.png" alt="Optics Performance" style="width: 60%; height: auto;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: center; width: 100%;">
+              <img src="static/plots/thermo_performance.png" alt="Thermodynamics Performance" style="width: 60%; height: auto;">
+            </div>
+          </div>
           
           <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
             <p><strong>Note:</strong> For OpenAI models, we "require" web search to be used because "auto" mode never utilized web search. Google's models does not have such option, as there is only "auto" mode.</p>
           </div>
+         
         </div>
       
         <!-- RESULTS SECTION -->
-        <div class="column is-full" style="margin-top: 2rem;">
-          <h3 class="title is-4" style="text-align: left;">Results</h3>
-          
+        <!-- <div class="column is-full" style="margin-top: 2rem;">
           <div class="content has-text-justified">
-            <p>
-              Web search tools degrade rather than improve performance on PhysBench, with larger negative effects on weaker models—confirming the benchmark tests conceptual inference over recall, where external evidence distracts more than it helps.
-            </p>
             <p class="has-text-weight-semibold" style="text-align: left; margin-bottom: 0.5rem;">Performance comparison across different models and physics domains on PhysBench</p>
             <table class="table is-bordered is-striped is-hoverable is-fullwidth">
               <thead>
@@ -862,11 +761,215 @@
               </tbody>
             </table>
           </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Case Study</h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            To understand how web search degrades model performance on physics reasoning, we examine specific cases where models with web search tools produce incorrect solutions that differ from their toolless counterparts. Two representative examples illustrate different failure modes.
+          </p>
+        </div>
+
+        <!-- Case Study 1: Text Extraction Error -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Case 1: Text Extraction Error from Accurate Source</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              <strong>Question 260:</strong> A physics problem requiring calculation of classical specific heat at constant volume per electron.
+            </p>
+            <h4 class="title is-5" style="text-align: left;">Gpt-4.1-mini Reasoning Output</h4>
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #28a745;">
+              <p class="title is-6" style="color: #155724; margin-bottom: 0.5rem;">✓ <strong>No Tools (Correct):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "1. Classically, electrons behave like an ideal gas with 3 degrees of freedom, each contributing (1/2)k_B per electron to the internal energy. Therefore, the classical specific heat at constant volume per electron is c_v = (3/2) k_B."
+              </p>
+            </div>
+            
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #dc3545;">
+              <p class="title is-6" style="color: #721c24; margin-bottom: 0.5rem;">✗ <strong>With Web Search (Incorrect):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "In classical theory, the specific heat at constant volume per electron is calculated using the <strong>equipartition theorem, which states that each degree of freedom contributes k_B </strong> to the average energy. For a free electron gas, each electron has three translational degrees of freedom, leading to an average energy of 3k_B T per electron. Therefore, the classical specific heat per electron is c_v = <strong>3k_B</strong>."
+              </p>
+            </div>
+            <p>
+              <strong>Root Cause:</strong> The model referenced an accurate PDF source that correctly stated "1/2 k_B to the heat capacity." However, the associated plain text extraction of the same source (left panel) incorrectly rendered this as "kB to the heat capacity." The model picked up the incorrectly translated text rather than the correct PDF content, essentially leading to use the wrong formula.
+            </p>
+            <img src="static/plots/case1.png" alt="Case 1" style="width: 100%; height: auto;">
+            
+          </div>
+        </div>
+
+        <!-- Case Study 2: Poor Source Selection -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Case 2: Poor Source Selection for Relativistic Problem</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              <strong>Question 272:</strong> A relativistic elastic collision problem requiring center-of-mass frame calculations.
+            </p>
+            
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #28a745;">
+              <p class="title is-6" style="color: #155724; margin-bottom: 0.5rem;">✓ <strong>No Tools (Correct):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "Find velocity of the center-of-mass (COM) frame using total momentum and total energy: <strong>β = (p1 + p2) / (E1 + E2)</strong> = (1.5 + 0.4364) / (2.5 + 1.091) = 1.9364 / 3.591 = 0.5393."
+              </p>
+            </div>
+            
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #dc3545;">
+              <p class="title is-6" style="color: #721c24; margin-bottom: 0.5rem;">✗ <strong>With Web Search (Incorrect):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "The velocity of the COM frame, denoted as β, is given by the formula: <strong>β = (m1 * v1 + m2 * v2) / (m1 + m2)</strong> ... Substituting the given values: β = (2.0 kg * 0.6c + 1.0 kg * 0.4c) / (2.0 kg + 1.0 kg) ... β = (1.2c + 0.4c) / 3.0 kg ... β = 1.6c / 3.0 kg ... β = 0.5333"
+              </p>
+            </div>
+            
+            <p>
+              <strong>Root Cause:</strong> Of the 12 sources referenced, 50% were classical mechanics sources that provided inappropriate formulas for a relativistic problem. The model selected contradictory information and applied classical physics to a scenario requiring relativistic treatment, resulting in fundamentally incorrect reasoning.
+            </p>
+            <img src="static/images/case2.png" alt="Case 2" style="width: 100%; height: auto;">
+          </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Analysis</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              These case studies reveal two critical failure modes when models use web search for physics reasoning:
+            </p>
+            <ol>
+              <li><strong>Information Extraction Errors:</strong> Even when sources are accurate, text extraction errors can introduce subtle but significant mistakes that models incorporate into their reasoning.</li>
+              <li><strong>Inappropriate Source Selection:</strong> Web search can retrieve contradictory or irrelevant information that leads models away from correct physical principles.</li>
+            </ol>
+            <p>
+              Both cases confirm the existence of the web search's adversarial effect phenomenon. Web search introduces noise into the reasoning process, aligning with previous phenomenon like "Lost in the Middle", where models struggled to distinguish valuable/accurate information when flooded with large amounts of data. The case studies call for potential methodologies to effectively utilize domain filtering. 
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Supplementary Analysis: Question Set Difficulty</h2>
+        
+        <!-- SETUP SECTION -->
+        <div class="column is-full">
+          
+          <div class="content has-text-justified">
+            <h4 class="title is-5">Performance Comparison</h4>
+            <p>The set of questions we evaluate (PhysBench) is substantially more challenging than existing benchmarks. We compare against OlympiadBench as the most comparable existing multi-modal physics benchmark in domain coverage and problem difficulty.</p>
+            <img src="static/plots/model_performance_comparison.png" alt="Performance Comparison" style="width: 100%; height: auto;">
+            
+            <h4 class="title is-5">Submatrix Analysis</h4>
+            <p>
+              To quantify the quality of our physics question set $Q_{\text{Phys}}$ compared to existing benchmarks $B_{\text{Existing}}$, we classify models into strong ($M_{\text{strong}}$) and weak ($M_{\text{weak}}$) groups using a 30% accuracy threshold. We then identify performance patterns where:
+            </p>
+            <ol style="list-style-type: none; padding-left: 0;">
+              <li>(1) $A(M_{\text{Strong}}, Q_{\text{Phys}}) \gg A(M_{\text{Weak}}, Q_{\text{Phys}})$, and</li>
+              <li>(2) $A(M_{\text{Strong}}, B_{\text{Existing}}) \approx A(M_{\text{Weak}}, B_{\text{Existing}})$,</li>
+            </ol>
+            <p>
+              where $A(M,B)$ refers to the average accuracy rate of models in group $M$ on question set $B$. Here, <strong>solution length</strong> means the number of words in the ground truth solution is shorter than the average in the dataset. <strong>Latex components</strong> count the number of distinct mathematical expressions present in a solution; "fewer" latex components means a question uses less mathematical notation than average.
+            </p>
+            
+            <h4 class="title is-5">Clustering Analysis</h4>
+            <p>
+              We extend submatrix analysis through clustering to discover natural problem groupings beyond predefined features. We generate embeddings from problem text (context + question) for all problems across both question sets, placing them in a unified vector space. After clustering, we use an LLM to generate keyword lists for problems within each cluster, enabling qualitative interpretation of the discovered subcategories.
+            </p>
+          </div>
+        </div>
+      
+        <!-- TABLE SECTION -->
+        <div class="content" style="margin-top: 2rem;">
+          <table class="table is-bordered is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th rowspan="3"></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Solution Length</strong></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Latex Components</strong></th>
+                <th colspan="2" style="text-align: center; border-bottom: 2px solid #ddd;"><strong>Problem Embedding</strong></th>
+              </tr>
+              <tr>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Short (bottom 50%)</th>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Fewer (bottom 50%)</th>
+                <th colspan="2" style="text-align: center; font-style: italic; border-bottom: 1px solid #ddd;">Thermo Cluster 11</th>
+              </tr>
+              <tr>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=459, n=239</th>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=344, n=232</th>
+                <th colspan="2" style="text-align: center; font-style: italic; font-size: 0.9em;">n=138, n=33</th>
+              </tr>
+              <tr style="border-top: 2px solid #333;">
+                <th><strong>Model Group</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+                <th style="text-align: center;"><strong>PB</strong></th>
+                <th style="text-align: center;"><strong>OB</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$M_{\text{strong}}$</td>
+                <td style="text-align: center;">48.15%</td>
+                <td style="text-align: center;">68.20%</td>
+                <td style="text-align: center;">52.62%</td>
+                <td style="text-align: center;">57.33%</td>
+                <td style="text-align: center;">51.41%</td>
+                <td style="text-align: center;">62.86%</td>
+              </tr>
+              <tr>
+                <td>$M_{\text{weak}}$</td>
+                <td style="text-align: center;">23.63%</td>
+                <td style="text-align: center;">58.84%</td>
+                <td style="text-align: center;">22.91%</td>
+                <td style="text-align: center;">49.84%</td>
+                <td style="text-align: center;">30.52%</td>
+                <td style="text-align: center;">53.19%</td>
+              </tr>
+              <tr style="border-top: 2px solid #333;">
+                <td><strong>Gap (×)</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.62</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.30</strong></td>
+                <td colspan="2" style="text-align: center;"><strong>2.16</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div style="margin-top: 10px; font-size: 0.9em; color: #666; text-align: left;">
+            <p><strong>Note:</strong> PB = PhysBench, OB = OlympiadBench. Gap (×) = ratio of PhysBench gap to OlympiadBench gap. For clustering, we implement KMeans, setting $k=13$, using OpenAI's text-embedding-3-large. Thermodynamics cluster (third column): ≈2.2× stronger discrimination; keywords indicate phase behavior and thermal energy transfer in real systems, beyond ideal-gas assumptions.</p>
+          </div>
+        </div>
+      
+        <!-- RESULTS SECTION -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Results</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              Our physics question set exhibits substantial model discrimination even on problems with simple mathematical expressions, revealing that difficulty arises from conceptual reasoning rather than computation. Clustering analysis further identifies thermodynamics as particularly challenging, with persistent performance gaps on real-system physics like phase transitions. These results validate that our question set effectively tests the conceptual reasoning capabilities that are central to the web search adversarial effects we observe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!--BibTex citation -->
   <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
