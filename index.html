@@ -209,17 +209,18 @@
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://emk255.github.io" target="_blank">Elliot Kim</a></span>
-                <span class="author-block">
-                  <!-- <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span> -->
+                <a href="https://emk255.github.io" target="_blank">Elliot Kim</a><sup>1</sup></span>
+              <span class="author-block">
+                  <a target="_blank">Howard Meng</a><sup>2</sup></span>
                   <span class="author-block">
-                    <!-- <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a> -->
+                    <a href="https://research4pan.github.io/" target="_blank">Rui Pan</a><sup>2</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Cornell University</span>
+                    <span class="author-block"><sup>1</sup>Cornell University</span>
+                    <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
@@ -359,11 +360,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Case Study</h2>
+        <h2 class="title is-3">Case Studies: When Web Search is Adversarial</h2>
         
         <div class="content has-text-justified">
           <p>
-            To understand how web search degrades model performance on physics reasoning, we examine specific cases where <u>Gpt-4.1-mini</u> with web search tools produce incorrect solutions that differ from their toolless counterparts. Two representative examples illustrate different failure modes.
+            Our experimental results show that web search <strong>degrades</strong> model performance on physics reasoning. To understand how and why this happens, we examine specific cases where <u>Gpt-4.1-mini</u> with web search tools produces <strong>incorrect</strong> solutions that differ from their toolless counterparts. Two representative examples illustrate different failure modes where web search actively harms reasoning.
           </p>
         </div>
 
@@ -440,6 +441,61 @@
             </ol>
             <p>
               Both cases confirm the existence of the web search's adversarial effect phenomenon. Web search introduces noise into the reasoning process, aligning with previous phenomenon like "Lost in the Middle", where models struggled to distinguish valuable/accurate information when flooded with large amounts of data. The case studies call for potential methodologies to effectively utilize domain filtering. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Case Study: When Web Search Helps </h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            While web search <strong>typically degrades</strong> performance on physics reasoning (as shown in the previous section), there are <strong>rare cases</strong> where it provides valuable information that improves model accuracy. We examine a specific example where <u>Gpt-4.1-mini</u> with web search tools produces a <strong>correct</strong> solution that the toolless version fails to solve. This case helps us understand the conditions under which web search can be beneficial, despite its overall adversarial effect.
+          </p>
+        </div>
+
+        <!-- Case Study: Web Search Helps -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Sources with Correct Formulas</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              <strong>Question 133:</strong> A relativistic optics problem requiring calculation of wavelength shift when light enters a moving medium with refractive index n=1.41 moving at 0.659c.
+            </p>
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #dc3545;">
+              <p class="title is-6" style="color: #721c24; margin-bottom: 0.5rem;">✗ <strong>No Tools (Incorrect):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "Use <strong>relativistic velocity addition</strong> to find speed of light inside medium in ground frame: c' = (c/n + V) / (1 + (V c/n)/c²) with V = -0.659c. Calculate c': c' = (c/1.41 - 0.659c) / (1 - 0.659/1.41) ≈ (0.709c - 0.659c)/ (1 - 0.467) = 0.05c / 0.533 ≈ <strong>0.0938c</strong>. Wavelength in ground frame after entering medium is λ' = c'/f. Since frequency f is invariant, wavelength ratio ξ = c'/c = <strong>0.094</strong> ✗"
+              </p>
+            </div>
+            
+            <div class="box" style="background-color: #f8f9fa; border-left: 4px solid #28a745;">
+              <p class="title is-6" style="color: #155724; margin-bottom: 0.5rem;">✓ <strong>With Web Search (Correct):</strong></p>
+              <p style="margin-bottom: 0; font-family: monospace; background-color: white; padding: 0.5rem; border-radius: 3px;">
+                "To find ξ, we need to consider the <strong>relativistic Doppler effect</strong>, which accounts for the change in wavelength due to the relative motion between the source and the observer. The relativistic Doppler shift formula for wavelength is given by: <strong>λ' = λ √[(1 + β) / (1 - β)]</strong>, where β = v/c ... Substituting v = -0.659c into the formula: λ' = λ √[(1 - 0.659) / (1 + 0.659)] ≈ λ √[0.205] ≈ λ × 0.453. Therefore, ξ ≈ <strong>0.453</strong> ✓"
+              </p>
+            </div>
+            <p>
+              <strong>Why Web Search Helped:</strong> The model referenced accurate sources on relativistic Doppler effects (HyperPhysics). It is evident that the model referenced these sources because the same notations (e.g., λ', β, and the specific formula structure) were used in the model's response, as shown in the image below. Without web search, the model misidentified the problem as requiring velocity addition rather than Doppler shift, applying an inappropriate formula and obtaining a physically absurd result (light speed at 9% of c).
+            </p>
+            <img src="static/images/success_case1.png" alt="Case Study: When Web Search Helps" style="width: 100%; height: auto;">
+            
+          </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="column is-full" style="margin-top: 2rem;">
+          <h3 class="title is-4" style="text-align: left;">Analysis</h3>
+          
+          <div class="content has-text-justified">
+            <p>
+              This case study demonstrates that there are rare cases where web search will reference sources that actually help or augment information that is not already known by the model. In this example, the model was able to access authoritative sources (HyperPhysics) that provided the correct relativistic Doppler effect formula and methodology, which the model did not have in its training data. However, such beneficial cases are rare compared to the adversarial effects shown in the previous section, where web search typically introduces noise, incorrect information, or inappropriate source selection that degrades reasoning performance.
             </p>
           </div>
         </div>

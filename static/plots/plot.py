@@ -84,14 +84,14 @@ def create_plot(data, subject, questions, filename):
     # Customize axes
     ax.set_ylabel(
         "Performance (%)",
-        fontsize=13,
+        fontsize=20,
         fontweight="600",
         color="#424242",
         fontfamily="sans-serif",
     )
     ax.set_title(
         f"{subject} Performance: Toolless vs Web Search\n({questions} questions)",
-        fontsize=14,
+        fontsize=21,
         fontweight="700",
         pad=20,
         color="#2C3E50",
@@ -100,7 +100,9 @@ def create_plot(data, subject, questions, filename):
 
     # Set x-axis labels - centered between bars
     ax.set_xticks(x)
-    ax.set_xticklabels(data["models"], fontsize=11, color="#424242", ha="center")
+    ax.set_xticklabels(
+        data["models"], fontsize=17, color="#424242", ha="center", fontweight="bold"
+    )
 
     # Add top margin for better spacing between bars and labels
     ax.set_ylim(
@@ -124,7 +126,7 @@ def create_plot(data, subject, questions, filename):
         handles=legend_elements,
         loc="upper right",
         framealpha=0.95,
-        fontsize=11,
+        fontsize=17,
         edgecolor="#E0E0E0",
         fancybox=True,
         shadow=True,
@@ -144,7 +146,7 @@ def create_plot(data, subject, questions, filename):
     ax.spines["bottom"].set_linewidth(1.5)
 
     # Tick styling
-    ax.tick_params(axis="both", colors="#757575", labelsize=10)
+    ax.tick_params(axis="both", colors="#757575", labelsize=15)
 
     # Add value labels on bars
     def add_value_labels(bars, values):
@@ -157,7 +159,7 @@ def create_plot(data, subject, questions, filename):
                     f"{val:.1f}%",
                     ha="center",
                     va="bottom",
-                    fontsize=9,
+                    fontsize=14,
                     fontweight="600",
                     color="#424242",
                 )
